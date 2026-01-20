@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passaporte Mágico - Sua Próxima Aventura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="assets/image/icon.png" type="image/x-icon">
+    
+    <style>
+        /* VARIÁVEIS DE CORES */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+            --accent-color: #60a5fa;
+            --button-hover: #2563eb;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #f1f5f9;
+            --card-bg: #1e293b;
+            --accent-color: #3b82f6;
+        }
+
+        /* RESET E GERAL */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            transition: background 0.4s ease, color 0.4s ease;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* HEADER E MENU */
+        header {
+            background: var(--primary-gradient);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo img { height: 100px; }
+
+        .nav-container { display: flex; align-items: center; gap: 20px; }
+
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+
+        .nav-links a {
+            color: white; text-decoration: none; font-weight: bold;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-color); padding-left: 5px; }
+
+        /* BOTÃO TEMA */
+        #theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--primary-gradient);
+            color: white;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        /* GRID DE 3 COLUNAS (CORRIGIDO) */
+        .destinos-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colunas fixas no desktop */
+            gap: 30px;
+            padding: 50px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+
+        .card-content { padding: 20px; }
+
+        /* BOTÕES COM MOVIMENTO SUAVE (CORRIGIDO) */
+        .btn-reserva {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-reserva:hover {
+            background: var(--button-hover);
+            transform: scale(1.05) translateX(10px); /* Movimenta para o lado suavemente */
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 20px;
+        }
+
+        .social-icon {
+            color: white; font-size: 1.8rem; margin: 0 10px;
+            transition: 0.4s; display: inline-block;
+        }
+        .social-icon:hover { transform: translateY(-8px); color: var(--accent-color); }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) { .destinos-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) {
+            .destinos-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Simplificado para focar no erro anterior */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/image/logo.png" alt="Passaporte Mágico">
+        </div>
+        <nav class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Destinos</a></li>
+                <li><a href="#">Pacotes</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+            <button id="theme-toggle">Trocar Tema</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Passaporte Mágico: o mundo ao seu alcance.</h1>
+        <p>Destinos incríveis esperam por você.</p>
+    </section>
+
+    <main class="destinos-container">
+        <div class="card">
+            <img src="assets/image/Indonesia.jpg" alt="Indonésia">
+            <div class="card-content">
+                <h3>Indonésia</h3>
+                <p>O paraíso azul que você sempre sonhou.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Londres.jpg" alt="Londres">
+            <div class="card-content">
+                <h3>Londres</h3>
+                <p>Tradição e modernidade.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/nova york.jpg" alt="Nova York">
+            <div class="card-content">
+                <h3>Nova York</h3>
+                <p>Poética, a cidade que nunca dorme.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Rio de Janeiro.jpg" alt="Rio de Janeiro">
+            <div class="card-content">
+                <h3>Rio de Janeiro</h3>
+                <p>Entre montanhas e mar, cada cenário é único.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Suiça.jpg" alt="Suíça">
+            <div class="card-content">
+                <h3>Suiça</h3>
+                <p>Montanhas imponentes e lagos cristalinos.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Tokio.jpg" alt="Tokio">
+            <div class="card-content">
+                <h3>Tokio</h3>
+                <p>Tradição milenar e tecnologia futurista</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h2>Passaporte Mágico</h2>
+                <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                <p><i class="fas fa-envelope"></i> contato@passaportemagico.com.br</p>
+            </div>
+            <div class="footer-socials">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+        <p style="margin-top:20px; opacity:0.7;">&copy; 2024 Passaporte Mágico Agência de Viagens.</p>
+    </footer>
+
+    <script>
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeBtn.onclick = () => {
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeBtn.innerText = "Trocar Tema";
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeBtn.innerText = "Modo Claro";
+            }
+        };
+
+        // Verifica preferência salva
+        if (localStorage.getItem('theme') === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            themeBtn.innerText = "Modo Claro";
+        }
+    </script>
+</body>
+</html>

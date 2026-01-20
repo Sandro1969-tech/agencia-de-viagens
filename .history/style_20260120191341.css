@@ -1,0 +1,155 @@
+/* Definição das cores do tema */
+:root {
+    /* Tema Claro (Padrão) */
+    --bg-main: #f4f7f6;
+    --bg-card: #ffffff;
+    --text-color: #1a1a1a;
+    --gradient-blue: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    --btn-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    /* Tema Escuro */
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-color: #f1f5f9;
+    --btn-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo do Botão de Alternância */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    background: var(--gradient-blue);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 15px var(--btn-shadow);
+    transition: transform 0.3s ease, background 0.5s ease;
+    z-index: 1001;
+}
+#theme-toggle {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid white;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Menu Mobile */
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Regras para Tablet e Celular */
+@media (max-width: 850px) {
+    .menu-toggle { display: block; }
+    
+    .nav-links {
+        display: none; /* Escondido por padrão no mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--card-bg); /* Usa a cor do card definida no seu tema */
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex; /* Aparece ao clicar no hambúrguer */
+    }
+
+    .nav-links a {
+        color: var(--text-color); /* Ajusta cor para o fundo do menu mobile */
+        font-size: 1.2rem;
+    }
+}
+
+.theme-switch:hover {
+    transform: scale(1.1);
+}
+
+/* Aplicando as variáveis aos elementos */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--bg-card);
+}
+footer {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 40px 5%;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    opacity: 0.9;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 1.8rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efeito de movimento suave solicitado */
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.2);
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsividade do rodapé */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

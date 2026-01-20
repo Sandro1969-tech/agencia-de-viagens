@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passaporte Mágico - Sua Próxima Aventura</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/image/icon.png" type="image/x-icon">
+    <style>
+        /* Variáveis de Cores */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+            --accent-color: #60a5fa;
+            --button-hover: #2563eb;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #f1f5f9;
+            --card-bg: #1e293b;
+            --accent-color: #3b82f6;
+        }
+
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background 0.3s ease, color 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Header e Navegação */
+        header {
+            background: var(--primary-gradient);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        /* Botão Dark Mode */
+        #theme-toggle {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid white;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--primary-gradient);
+            color: white;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        /* Grid de Destinos */
+        .destinos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 50px 5%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        /* Botões com Efeito Hover Suave */
+        .btn-reserva {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-reserva:hover {
+            background: var(--button-hover);
+            transform: scale(1.05) translateX(5px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .destinos-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/image/logo.png" alt="Passaporte Mágico">
+        </div>
+        <div class="nav-buttons">
+            <button id="theme-toggle">Trocar Tema</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Explore o Mundo com o Passaporte Mágico</h1>
+        <p>Destinos incríveis esperam por você.</p>
+    </section>
+
+    <main class="destinos-container">
+        <div class="card">
+            <img src="imagem1.jpg" alt="Destino 1">
+            <div class="card-content">
+                <h3>Indoné Relaxantes</h3>
+                <p>O paraíso azul que você sempre sonhou.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="imagem2.jpg" alt="Destino 2">
+            <div class="card-content">
+                <h3>Paris Romântica</h3>
+                <p>Cultura, gastronomia e momentos inesquecíveis.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="imagem3.jpg" alt="Destino 3">
+            <div class="card-content">
+                <h3>Aventura na Islândia</h3>
+                <p>Cenários cinematográficos e auroras boreais.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="imagem4.jpg" alt="Destino 4">
+            <div class="card-content">
+                <h3>Tóquio Futurista</h3>
+                <p>A mistura perfeita entre tradição e tecnologia.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="imagem5.jpg" alt="Destino 5">
+            <div class="card-content">
+                <h3>Safari na África</h3>
+                <p>Conexão profunda com a natureza selvagem.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="imagem6.jpg" alt="Destino 6">
+            <div class="card-content">
+                <h3>Nova York Vibrante</h3>
+                <p>A energia da cidade que nunca dorme.</p>
+                <a href="#" class="btn-reserva">Ver Pacote</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Manter o tema ao recarregar a página
+        if (localStorage.getItem('theme') === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+        }
+    </script>
+</body>
+</html>

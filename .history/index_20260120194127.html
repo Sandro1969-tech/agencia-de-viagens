@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passaporte Mágico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CORES PRINCIPAIS */
+        :root {
+            --bg: #f0f2f5;
+            --texto: #1a1a1a;
+            --card: #ffffff;
+            --gradiente: linear-gradient(135deg, #1e3a8a, #3b82f6);
+        }
+
+        /* CORES MODO ESCURO */
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --texto: #f1f5f9;
+            --card: #1e293b;
+        }
+
+        body { background: var(--bg); color: var(--texto); font-family: sans-serif; margin: 0; transition: 0.3s; }
+
+        /* HEADER E MENU */
+        header { 
+            background: var(--gradiente); 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 5%; color: white; position: sticky; top: 0; z-index: 100;
+        }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .nav-links a:hover { padding-left: 5px; color: #60a5fa; }
+
+        /* BOTÃO TEMA */
+        #theme-btn { 
+            background: white; border: none; padding: 8px 15px; 
+            border-radius: 20px; cursor: pointer; font-weight: bold; 
+        }
+
+        /* GRID DE 3 COLUNAS (O QUE VOCÊ PEDIU) */
+        .container { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); /* FORÇA 3 COLUNAS NO PC */
+            gap: 20px; padding: 40px 5%; 
+        }
+
+        .card { background: var(--card); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 15px; }
+
+        /* BOTÃO COM MOVIMENTO SUAVE */
+        .btn-viagem { 
+            display: inline-block; background: var(--gradiente); color: white; 
+            padding: 10px 20px; text-decoration: none; border-radius: 8px;
+            transition: 0.4s ease; font-weight: bold;
+        }
+        .btn-viagem:hover { transform: translateX(10px); filter: brightness(1.2); }
+
+        /* RODAPÉ */
+        footer { background: var(--gradiente); color: white; padding: 30px; text-align: center; margin-top: 50px; }
+
+        /* RESPONSIVIDADE (TABLET E CELULAR) */
+        @media (max-width: 900px) { .container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .container { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="assets/image/logo.png" alt="Logo" height="50">
+        <ul class="nav-links">
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Pacotes</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+        <button id="theme-btn">Trocar Tema</button>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <img src="assets/image/Indonesia.jpg">
+            <div class="card-body">
+                <h3>Indonésia</h3>
+                <a href="#" class="btn-viagem">Ver Mais</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Londres.jpg">
+            <div class="card-body">
+                <h3>Londres</h3>
+                <a href="#" class="btn-viagem">Ver Mais</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/nova york.jpg">
+            <div class="card-body">
+                <h3>Nova York</h3>
+                <a href="#" class="btn-viagem">Ver Mais</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Rio de Janeiro.jpg">
+            <div class="card-body">
+                <h3>Rio de Janeiro</h3>
+                <a href="#" class="btn-viagem">Ver Mais</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Suiça.jpg">
+            <div class="card-body">
+                <h3>Suíça</h3>
+                <a href="#" class="btn-viagem">Ver Mais</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="assets/image/Tokio.jpg">
+            <div class="card-body">
+                <h3>Tóquio</h3>
+                <a href="#" class="btn-viagem">Ver Mais</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Passaporte Mágico | (11) 9999-9999 | contato@passaportemagico.com.br</p>
+        <div style="font-size: 25px; margin-top: 10px;">
+            <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('theme-btn');
+        btn.onclick = () => {
+            const body = document.body;
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                btn.innerText = "Modo Escuro";
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btn.innerText = "Modo Claro";
+            }
+        };
+    </script>
+</body>
+</html>
